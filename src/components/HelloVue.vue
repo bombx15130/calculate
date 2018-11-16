@@ -36,7 +36,8 @@ export default {
     data(){
         return{
             infos:[],
-            cPage:0,
+            cPage:null,
+            prePage:null,
             page:[
                 {page:"<" ,type:""},
                 {page:1 ,type:{liColor:true}},
@@ -83,11 +84,13 @@ export default {
     },
     methods:{
         data:function (value){
-                // 清空陣列避免每次點按鈕會加資料上去
-                this.shows=[];
                 
-                // 判斷切換pagination畫面
+                
+                // 判斷切換pagination畫面(如果是數字才執行動作)
                 if(value>0 && value<=50){
+                    // 清空陣列避免每次點按鈕會加資料上去
+                    this.shows=[];
+                        
                         if(value>4 && value<47){
                             if(value===5){
                                 this.page[2].page = "..."
@@ -110,12 +113,33 @@ export default {
                                     this.page[5].page -=1
                                 }
                             }
+
+                            
+                            
                     }else if(value<5){
                         this.page[2].page = 2
                         this.page[3].page = 3
                         this.page[4].page = 4
                         this.page[5].page = 5
                         this.page[6].page = "..."
+                        // 當前頁面變色
+                        if(this.cPage === null){
+                            this.cPage = this.page[value].page
+                            this.prePage = this.page[value].page
+                            this.page[1].type = {liColor:false}
+                            this.page[this.cPage].type = {liColor:true}
+                        }else{
+                            this.prePage = this.cPage
+                            this.cPage = this.page[value].page
+                            this.page[this.prePage].type = {liColor:false}
+                            this.page[this.cPage].type = {liColor:true}
+                        }
+                        
+                         console.log(this.cPage)
+                         console.log(this.prePage)
+                        // this.page[this.prePage].type = {liColor:false}
+                        
+                        
                         
                     }else if(value>46){
                         if(value === 47 || value === 50){
@@ -142,15 +166,15 @@ export default {
 </script>
 
 <style scoped>
+
 *{
     margin:0px;
     padding:0px;
 }
 #tableTest{
+    
     width:50%;
-    margin:auto;
-    /* outline: 1px solid #F00; */
-    /* text-align: left; */
+    margin:50px auto;
     padding:10px;
     border:1px solid #DDD;
 }
@@ -170,13 +194,16 @@ export default {
 .liColor{
     background-color: aqua;
 }
-table{
+#tableTest table{
     width:100%;
     border-collapse: collapse;
     text-align: center;
 }
-th,td{
+th{
     padding:10px;
+}
+tr:nth-child(odd){
+    background-color: #DDD;
 }
 </style>
 

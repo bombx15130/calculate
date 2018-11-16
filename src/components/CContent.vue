@@ -20,13 +20,6 @@ export default {
 <style>
 td{
     padding:10px;
-    
-}
-tr:nth-child(odd){
-    background-color: #DDD;
-}
-tr{
-    
 }
 </style>
 

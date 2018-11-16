@@ -3,6 +3,7 @@ import Router from 'vue-router'
 import HelloWorld from '@/components/HelloWorld'
 import HelloPaul from '@/components/HelloPaul'
 import HelloVue from '@/components/HelloVue'
+import HelloSass from '@/components/HelloSass'
 
 Vue.use(Router)
 
@@ -21,6 +22,10 @@ export default new Router({
     {
       path: '/HelloVue',
       component: HelloVue
+    },
+    {
+      path: '/HelloSass',
+      component: HelloSass
     }
   ]
 })

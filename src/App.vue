@@ -2,11 +2,12 @@
   <div id="app">
     <img src="./assets/logo.png">
     <div>
-      <p>
-        <router-link to="/HelloWorld">GO to HelloWorld</router-link>
-        <router-link to="/HelloPaul">GO to Calculate</router-link>
-        <router-link to="/HelloVue">GO to Vue</router-link>
-      </p>
+      
+        <div><router-link to="/HelloWorld">GO to HelloWorld</router-link></div>
+        <div><router-link to="/HelloPaul">GO to Calculate</router-link></div>
+        <div><router-link to="/HelloVue">GO to Vue</router-link></div>
+        <div><router-link to="/HelloSass">GO to Sass</router-link></div>
+      
     </div>
     <router-view/>
   </div>
@@ -18,7 +19,7 @@ export default {
 }
 </script>
 
-<style>
+<style >
 #app {
   font-family: 'Avenir', Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
