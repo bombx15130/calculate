@@ -8,20 +8,20 @@
                 <th>信箱</th>
                 <th>修改</th>
             </tr>
-            <t-content
+            <s-content
                 v-for="c in contents"
                 :key="c.id"
                 :id="c.id"
                 :name="c.name"
                 :phone="c.phone"
                 :email="c.email"
-            ></t-content>
+            ></s-content>
         </table>
     </div>
 </template>
 
 <script>
-
+import SContent from './SContent'
 export default {
     data(){
         return{
@@ -35,25 +35,20 @@ export default {
         }
     },
     components:{
-        't-content':{
-            props:['id','name','phone','email'],
-            data(){
-                return{
-                }
-            },
-            template:'<tr><td>{{id}}</td><td>{{name}}</td><td>{{phone}}</td><td>{{email}}</td><td><button>Select</button></td></tr>',
-        }
+        SContent
     }
 }
 </script>
 
 <style lang="scss" scoped>
+
+
 $fontSize:16px;
 $font:'ariel';
 $thColor:#2C3845;
 $chFont:'微軟正黑體';
 .tableWrap{
-    color:$aaa;
+    color:#FFF;
     width:80%;
     background-color: #5BB9B8;
     margin:100px auto;
@@ -76,10 +71,6 @@ $chFont:'微軟正黑體';
         th{
             font-family: $chFont;
             background-color: $thColor;
-        }
-        button{
-            border-radius: 4px;
-            
         }
     }
 }

@@ -14,7 +14,13 @@
             ></c-content>
             <!-- 分頁功能 -->
         </table>
-        <div class="pagination">
+        <pagination
+            :perShow="perShow"
+            :count="infos.length"
+            :currentPage="currentPage"
+            @click="click"
+        />
+        <!-- <div class="pagination">
             <ul>
                 <pagination
                 v-for="p in page"
@@ -24,7 +30,7 @@
                 @getData="data"
                 ></pagination>
             </ul>
-        </div>
+        </div> -->
     </div>
 </template>
 
@@ -50,6 +56,9 @@ export default {
                 {page:">" ,type:""},
             ],
             shows:[],
+
+            perShow: 10,
+            currentPage: 1
         }
     },
     created: function() {
@@ -64,11 +73,11 @@ export default {
                     mail: r.data.results[i].email
                 })
             }
-                // 將資料放進pages陣列裡(計算資料筆數需要幾個page)
-            this.page[7] = {page:(r.data.results.length/10)}
+            //     // 將資料放進pages陣列裡(計算資料筆數需要幾個page)
+            // this.page[7] = {page:(r.data.results.length/10)}
 
             // 一開始沒資料先放10筆進去
-            for(let i = 0;i< 10;i++){
+            for(let i = 0;i< this.perShow; i++){
                     this.shows.push({
                         sGender: this.infos[i].gender,
                         sName: this.infos[i].name,
@@ -123,20 +132,20 @@ export default {
                         this.page[5].page = 5
                         this.page[6].page = "..."
                         // 當前頁面變色
-                        if(this.cPage === null){
-                            this.cPage = this.page[value].page
-                            this.prePage = this.page[value].page
-                            this.page[1].type = {liColor:false}
-                            this.page[this.cPage].type = {liColor:true}
-                        }else{
-                            this.prePage = this.cPage
-                            this.cPage = this.page[value].page
-                            this.page[this.prePage].type = {liColor:false}
-                            this.page[this.cPage].type = {liColor:true}
-                        }
+                        // if(this.cPage === null){
+                        //     this.cPage = this.page[value].page
+                        //     this.prePage = this.page[value].page
+                        //     this.page[1].type = {liColor:false}
+                        //     this.page[this.cPage].type = {liColor:true}
+                        // }else{
+                        //     this.prePage = this.cPage
+                        //     this.cPage = this.page[value].page
+                        //     this.page[this.prePage].type = {liColor:false}
+                        //     this.page[this.cPage].type = {liColor:true}
+                        // }
                         
-                         console.log(this.cPage)
-                         console.log(this.prePage)
+                        //  console.log(this.cPage)
+                        //  console.log(this.prePage)
                         // this.page[this.prePage].type = {liColor:false}
                         
                         
@@ -161,6 +170,21 @@ export default {
                         }
                 }
         },
+        click: function (value) {
+            // 將資料傳入shows顯示畫面
+            const data = []
+            for(let i = (value-1)*10;i< value*10;i++){
+                data.push({
+                    sGender: this.infos[i].gender,
+                    sName: this.infos[i].name,
+                    sPhone: this.infos[i].phone,
+                    sMail: this.infos[i].mail
+                })
+            }
+
+            this.shows = data
+            this.currentPage = value
+        }
     }
 }
 </script>

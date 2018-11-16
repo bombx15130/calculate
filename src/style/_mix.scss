@@ -46,4 +46,19 @@ table {
 	border-collapse: collapse;
 	border-spacing: 0;
 }
-$aaa:#f00;
+// ==========================================================
+// 變數區
+
+@mixin sButton(){
+	border-radius: 4px;
+	background-color: rgb(65, 187, 69);
+	border: none;
+	color: white;
+	padding: 5px 10px;
+	text-align: center;
+	text-decoration: none;
+	display: inline-block;
+	font-size: 16px;
+	outline: none;
+	cursor: pointer;
+}
