@@ -48,6 +48,7 @@ table {
 }
 // ==========================================================
 // 變數區
+@import './var.scss';
 
 @mixin sButton(){
 	border-radius: 4px;
