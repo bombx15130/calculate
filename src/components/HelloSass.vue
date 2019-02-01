@@ -31,7 +31,7 @@ export default {
                 {id:3,name:'Jack',phone:'0912314562',email:'ccc@gmail.com'},
                 {id:4,name:'Sandy',phone:'0912314563',email:'ddd@gmail.com'},
                 {id:5,name:'Cindy',phone:'0912314564',email:'eee@gmail.com'},
-            ]
+            ],
         }
     },
     components:{
@@ -41,14 +41,8 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-
-
-$fontSize:16px;
-$font:'ariel';
-$thColor:#2C3845;
-$chFont:'微軟正黑體';
 .tableWrap{
-    color:#FFF;
+    color:$fontColor;
     width:80%;
     background-color: #5BB9B8;
     margin:100px auto;
@@ -58,19 +52,21 @@ $chFont:'微軟正黑體';
         font-family:$font;
         font-size: $fontSize;
         margin:auto;
-        
         tr:nth-child(odd){
             background-color: rgba(44,56,69,.6);
         }
         tr:nth-child(even){
             background-color: rgba(44,56,69,.8);
         }
-        th,td{
+        th, td{
             padding:10px;
         }
         th{
             font-family: $chFont;
             background-color: $thColor;
+        }
+        tr:not(:nth-child(1)):hover{
+            background-color: rgba(12,33,56,1);
         }
     }
 }

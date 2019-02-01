@@ -21,12 +21,16 @@ export default {
 </script>
 
 <style lang="scss">
-td{
-    padding:10px;
-    button{
-        @include sButton();
-    }
+td:hover{
+    
 }
+
+    td{
+        padding:10px;
+        button{
+            @include sButton();
+        }
+    }
 </style>
 
 
